@@ -1,0 +1,320 @@
+﻿**************************************************************************************************************
+**************************************************************************************************************
+	EDITABLE STIMULI: change editable stimuli here
+**************************************************************************************************************
+**************************************************************************************************************
+
+<item rotations>
+/ 1 = "t.jpg"
+/2 = "t2.jpg"
+/3 = "t3.jpg"
+/4 = "t4.jpg"
+/5 = "t5.jpg"
+/6 = "t6.jpg"
+</item>
+
+<item judges>
+/1 = "j1.jpg"
+/2 = "j2.jpg"
+/3 = "j3.jpg"
+</item>
+
+<item user>
+/1 = "u1.png"
+</item>
+
+<item labelText>
+/1 = "A"
+/2 = "B"
+/3 = "C"
+</item>
+
+<clock clock1>
+/ position = (5%, 5%)
+/ timeout = 10000
+</clock>
+**************************************************************************************************************
+**************************************************************************************************************
+	EDITABLE INSTRUCTIONS: change instructions here
+**************************************************************************************************************
+**************************************************************************************************************
+********************************************************************************
+Instructions:
+The following are the instructions for the bean game. To change the instructions,
+simply edit the text below.
+********************************************************************************
+
+<item instructions>
+/ 1 = "Push some buttons"
+</item>
+
+
+****************************************************************************************************
+general instruction expressions: adjust the instruction text depending on device used to run script
+****************************************************************************************************
+<expressions>
+/buttoninstruct1 = if (computer.touch) {"button";} else {"key";}
+</expressions>
+**************************************************************************************************************
+								!!!REMAINING CODE: Customize after careful consideration only!!!
+**************************************************************************************************************
+
+
+**************************************************************************************************************
+**************************************************************************************************************
+	DEFAULTS
+**************************************************************************************************************
+**************************************************************************************************************
+script requires Inquisit 5.0.0.0 or higher
+
+<defaults>
+/canvasaspectratio = (4,3)
+/minimumversion = "5.0.0.0"
+/ fontstyle = ("Arial", 2.5%, false, false, false, false, 5, 0)
+/ screencolor = black
+/ txcolor = white
+/ txbgcolor = black
+/ resetinterval = 0
+</defaults>
+
+**************************************************************************************************************
+**************************************************************************************************************
+	STIMULI
+**************************************************************************************************************
+**************************************************************************************************************
+<picture target>
+/ items = rotations
+/ select =constant(1)
+/ size = (30%, 30%)
+/ position = (10%, 20%)
+/ erase = false
+</picture>
+
+<picture rotation1>
+/ items = rotations
+/ select =constant(2)
+/ size = (30%, 30%)
+/ position = (30%, 20%)
+/ erase = false
+</picture>
+
+<picture rotation2>
+/ items = rotations
+/ select =constant(2)
+/ size = (30%, 30%)
+/ position = (50%, 20%)
+/ erase = false
+</picture>
+
+<picture rotation3>
+/ items = rotations
+/ select =constant(2)
+/ size = (30%, 30%)
+/ position = (70%, 20%)
+/ erase = false
+</picture>
+
+<picture rotationgroup1>
+/ items = rotations
+/ select = noreplace(1, 2)
+/ size = (30%, 30%)
+/ position = (50%, 90%)
+/ erase = false
+</picture>
+
+<picture rotationgroup2>
+/ items = rotations
+/ select = noreplace(3, 4)
+/ size = (30%, 30%)
+/ position = (30%, 90%)
+/ erase = false
+</picture>
+
+<picture rotationgroup3>
+/ items = rotations
+/ select = noreplace(5, 6)
+/ size = (30%, 30%)
+/ position = (70%, 90%)
+/ erase = false
+</picture>
+
+<picture judge1Decision>
+/ items = rotations
+/ select = sequence(1, 2, 3, 4, 5)
+/ size = (20%, 20%)
+/ position = (70%, 40%)
+/ halign = left
+/ valign = top
+</picture>
+
+<picture judge2Decision>
+/ items = rotations
+/ select = sequence(1, 3, 3, 4, 5)
+/ size = (20%, 20%)
+/ position = (85%, 40%)
+/ halign = left
+/ valign = top
+</picture>
+
+<picture judge3Decision>
+/ items = rotations
+/ select = sequence(1, 3, 5, 4, 5)
+/ size = (20%, 20%)
+/ position = (70%, 60%)
+/ halign = left
+/ valign = top
+</picture>
+
+<picture judge4Decision>
+/ items = rotations
+/ select = sequence(1, 4, 3, 1, 5)
+/ size = (20%, 20%)
+/ position = (85%, 60%)
+/ halign = left
+/ valign = top
+</picture>
+
+<picture user>
+/items = user
+/ select = constant(1)
+/ size = (25%, 25%)
+/ position = (20%, 30%)
+/ erase = false
+</picture>
+
+<picture studentChoosing>
+/ items = rotations
+/ select = replace(1, 2, 3, 4, 5)
+/ size = (20%, 20%)
+/ position = (10%, 40%)
+/ halign = left
+/ valign = top
+</picture>
+
+********************************************************************************
+Additional Stimuli
+********************************************************************************
+<shape middledivider>
+/ shape = rectangle
+/ color = red
+/ position = (0%, 60%)
+/ size = (100%, 1%)
+/ halign = left
+/ valign = top
+/ erase = false
+</shape>
+
+<shape middledividervert>
+/ shape = rectangle
+/ color = red
+/ position = (50%, 0%)
+/ size = (1%, 60%)
+/ halign = left
+/ valign = top
+/ erase = false
+</shape>
+
+<shape topHorizontalThirdDivider>
+/ shape = rectangle
+/ color = red
+/ position = (0%, 33%)
+/ size = (100%, 1%)
+/ halign = left
+/ valign = top
+/ erase = false
+</shape>
+
+<shape leftThirdVerticalDivider>
+/ shape = rectangle
+/ color = red
+/ position = (33%, 33%)
+/ size = (1%, 100%)
+/ halign = left
+/ valign = top
+/ erase = false
+</shape>
+
+<shape rightThirdVerticalDivider>
+/ shape = rectangle
+/ color = red
+/ position = (66%, 33%)
+/ size = (1%, 100%)
+/ halign = left
+/ valign = top
+/ erase = false
+</shape>
+
+<shape studentAndSoundDivider>
+/ shape = rectangle
+/ color = red
+/ position = (0%, 66%)
+/ size = (33%, 1%)
+/ halign = left
+/ valign = top
+/ erase = false
+</shape>
+
+<text instructions>
+/ items = instructions
+/ size = (80%, 80%)
+/ hjustify = left
+/ vjustify = center
+/ select = sequence
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 0)
+</text>
+
+**************************************************************************************************************
+**************************************************************************************************************
+	TRIALS: Helper Trials
+**************************************************************************************************************
+**************************************************************************************************************
+
+<trial judgesDecision>
+/ stimulustimes = [0=target,  rotation1, rotation2, rotation3, topHorizontalThirdDivider, leftThirdVerticalDivider, studentAndSoundDivider, rightThirdVerticalDivider, judge1ChoiceLock, judge1Decision, judge2Decision, judge3Decision, judge4Decision]
+/ timeout = 3000;
+/ recorddata = false
+</trial>
+
+<trial userChooses>
+/ stimulustimes = [0=target,  rotation1, rotation2, rotation3, topHorizontalThirdDivider, leftThirdVerticalDivider, studentAndSoundDivider, rightThirdVerticalDivider, judge1ChoiceLock, judge1Decision, judge2Decision, judge3Decision, judge4Decision]
+/ validresponse = ("a", "b", "c")
+/ recorddata = false
+</trial>
+
+<trial studentChoosing>
+/ stimulustimes = [0=target, rotation1, rotation2, rotation3, topHorizontalThirdDivider, leftThirdVerticalDivider, studentAndSoundDivider, rightThirdVerticalDivider, studentChoosing, , judge1ChoiceLock, judge1Decision, judge2Decision, judge3Decision, judge4Decision]
+/ timeout = 500;
+/ recorddata = false
+</trial>
+
+<trial studentsDecision>
+/ stimulustimes = [0=topHorizontalThirdDivider, leftThirdVerticalDivider, studentAndSoundDivider, rightThirdVerticalDivider]
+/ timeout = 3000;
+/ recorddata = false
+</trial>
+
+
+**************************************************************************************************************
+**************************************************************************************************************
+	BLOCKS
+**************************************************************************************************************
+**************************************************************************************************************
+
+<block testblock>
+/ trials = []
+</block>
+
+
+**************************************************************************************************************
+**************************************************************************************************************
+	EXPERIMENT
+**************************************************************************************************************
+**************************************************************************************************************
+
+<expt beanfest>
+/ blocks = [1=testblock]
+</expt>
+
+********************************************************************************
+												End of Script
+********************************************************************************
