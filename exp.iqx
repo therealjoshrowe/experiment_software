@@ -4,11 +4,11 @@
 **************************************************************************************************************
 **************************************************************************************************************
 <values>
-/ volume="5"
+/vol = 6
 </values>
 
 <expressions>
-/volumeActual = values.volume - 1
+/volumeActual = values.vol - 1
 </expressions>
 
 
@@ -69,7 +69,15 @@
 </item>
 
 <item volumeItem>
-/1 = "volume = <%values.volume%>"
+/1 = "volume = <%expressions.volumeActual%>"
+</item>
+
+<item labels>
+/1 = "Target"
+/2 = "Rotation A"
+/3 = "Rotation B"
+/4 = "Rotation C"
+/5 = "Rotation D"
 </item>
 
 
@@ -86,7 +94,9 @@ simply edit the text below.
 ********************************************************************************
 
 <item instructions>
-/ 1 = "Push some buttons"
+/ 1 = "Choose the rotation that you believe corresponds to the target (a, b, c, d)"
+/ 2 = "Choose the kind of sound to play (g for good, b for bad)"
+/ 3 = "Choose the volume to play the sound (1 - 10)"
 </item>
 
 **************************************************************************************************************
@@ -105,8 +115,8 @@ script requires Inquisit 5.0.0.0 or higher <<-- probably not actually
 /canvasaspectratio = (4,3)
 /minimumversion = "5.0.0.0"
 / fontstyle = ("Arial", 2.5%, false, false, false, false, 5, 0)
-/ screencolor = black
 / txcolor = white
+/ screencolor = black
 / txbgcolor = black
 / resetinterval = 0
 </defaults>
@@ -116,6 +126,42 @@ script requires Inquisit 5.0.0.0 or higher <<-- probably not actually
 	STIMULI
 **************************************************************************************************************
 **************************************************************************************************************
+<text targetLabel>
+/ items = labels
+/ select = constant(1)
+/ position = (10%, 1%)
+/ halign = right
+/ erase = false
+</text>
+
+<text rotationALabel>
+/ items = labels
+/ select = constant(2)
+/ position = (30%, 1%)
+/ erase = false
+</text>
+
+<text rotationBLabel>
+/ items = labels
+/ select = constant(3)
+/ position = (50%, 1%)
+/ erase = false
+</text>
+
+<text rotationCLabel>
+/ items = labels
+/ select = constant(4)
+/ position = (70%, 1%)
+/ erase = false
+</text>
+
+<text rotationDLabel>
+/ items = labels
+/ select = constant(5)
+/ position = (90%, 1%)
+/ erase = false
+</text>
+
 <picture target>
 / items = targets
 / select =sequence(1, 2)
@@ -196,6 +242,46 @@ script requires Inquisit 5.0.0.0 or higher <<-- probably not actually
 / erase = false
 </picture>
 
+<picture target3rd>
+/ items = targets
+/ select =sequence(1, 2)
+/ size = (30%, 30%)
+/ position = (10%, 20%)
+/ erase = false
+</picture>
+
+<picture rotationA3rd>
+/ items = rotationsA
+/ select = sequence(1, 2)
+/ size = (30%, 30%)
+/ position = (30%, 20%)
+/ erase = false
+</picture>
+
+<picture rotationB3rd>
+/ items = rotationsB
+/ select = sequence(1, 2)
+/ size = (30%, 30%)
+/ position = (50%, 20%)
+/ erase = false
+</picture>
+
+<picture rotationC3rd>
+/ items = rotationsC
+/ select = sequence(1, 2)
+/ size = (30%, 30%)
+/ position = (70%, 20%)
+/ erase = false
+</picture>
+
+<picture rotationD3rd>
+/ items = rotationsD
+/ select = sequence(1, 2)
+/ size = (30%, 30%)
+/ position = (90%, 20%)
+/ erase = false
+</picture>
+
 <text judgeA>
 / items = judgeAResponses
 / select = sequence(1, 2)
@@ -260,7 +346,46 @@ script requires Inquisit 5.0.0.0 or higher <<-- probably not actually
 / erase = true(black)
 </text>
 
+<text judgeA3rd>
+/ items = judgeAResponses
+/ select = sequence(1, 2)
+/ size = (10%, 10%)
+/ position = (75%, 50%)
+/ erase = true(black)
+</text>
+
+<text judgeB3rd>
+/ items = judgeBResponses
+/ select = sequence(1, 2)
+/ size = (10%, 10%)
+/ position = (95%, 50%)
+/ erase = true(black)
+</text>
+
+<text judgeC3rd>
+/ items = judgeCResponses
+/ select = sequence(1, 2)
+/ size = (10%, 10%)
+/ position = (75%, 70%)
+/ erase = true(black)
+</text>
+
+<text judgeD3rd>
+/ items = judgeDResponses
+/ select = sequence(1, 2)
+/ size = (10%, 10%)
+/ position = (95%, 70%)
+/ erase = true(black)
+</text>
+
 <text student>
+/ items = studentResponses
+/ select = sequence(1, 2)
+/ position = (10%, 40%)
+/ erase = true(black)
+</text>
+
+<text student2nd>
 / items = studentResponses
 / select = sequence(1, 2)
 / position = (10%, 40%)
@@ -272,8 +397,44 @@ script requires Inquisit 5.0.0.0 or higher <<-- probably not actually
 / position = (10%, 70%)
 / erase = true(black)
 </text>
+
+<text instructions>
+/ items = instructions
+/ size = (80%, 80%)
+/ hjustify = left
+/ vjustify = center
+/ select = sequence
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 0)
+</text>
+
+<text chooseRotationInstructions>
+/ items = instructions
+/ size = (12%, 12%)
+/ halign = center
+/ valign = center
+/ select = constant(1)
+/ position = (50%, 50%)
+</text>
+
+<text decideSound>
+/ items = instructions
+/ size = (12%, 12%)
+/ halign = center
+/ valign = center
+/ select = constant(2)
+/ position = (50%, 50%)
+</text>
+
+<text decideVolume>
+/ items = instructions
+/ size = (12%, 12%)
+/ halign = center
+/ valign = center
+/ select = constant(3)
+/ position = (50%, 50%)
+</text>
 ********************************************************************************
-Additional Stimuli
+Additional Stimuli - That do not change on screen in between trials
 ********************************************************************************
 <shape middledivider>
 / shape = rectangle
@@ -335,34 +496,31 @@ Additional Stimuli
 / erase = false
 </shape>
 
-<text instructions>
-/ items = instructions
-/ size = (80%, 80%)
-/ hjustify = left
-/ vjustify = center
-/ select = sequence
-/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 0)
-</text>
-
-
 **************************************************************************************************************
 **************************************************************************************************************
-	TRIALS: Helper Trials
+	TRIALS: The real deal
 **************************************************************************************************************
 **************************************************************************************************************
 
 <trial testTrial>
-/ stimulustimes = [0=target,  rotationA, rotationB, rotationC, rotationD, topHorizontalThirdDivider, leftThirdVerticalDivider, studentAndSoundDivider, rightThirdVerticalDivider, volume; 3000 = judgeA, judgeB, judgeC, judgeD]
+/ stimulustimes = [0=targetLabel, rotationALabel, rotationBLabel, rotationCLabel, rotationDLabel, target,  rotationA, rotationB, rotationC, rotationD, topHorizontalThirdDivider, leftThirdVerticalDivider, studentAndSoundDivider, rightThirdVerticalDivider, volume; 3000 = judgeA, judgeB, judgeC, judgeD, chooseRotationInstructions]
 / validresponse = ("a", "b", "c")
 / recorddata = false
 </trial>
 
 <trial testTrial2>
-/ stimulustimes = [0=target2nd,  rotationA2nd, rotationB2nd, rotationC2nd, rotationD2nd, topHorizontalThirdDivider, leftThirdVerticalDivider, studentAndSoundDivider, rightThirdVerticalDivider, volume, judgeA2nd, judgeB2nd, judgeC2nd, judgeD2nd; 3000 = student]
+/ stimulustimes = [0=targetLabel, rotationALabel, rotationBLabel, rotationCLabel, rotationDLabel, target2nd,  rotationA2nd, rotationB2nd, rotationC2nd, rotationD2nd, topHorizontalThirdDivider, leftThirdVerticalDivider, studentAndSoundDivider, rightThirdVerticalDivider, volume, judgeA2nd, judgeB2nd, judgeC2nd, judgeD2nd; 3000 = student, decideVolume]
 / validresponse = ("0", "1", "2", "3", "4", "5", "6", "7", "8", "9")
-/ ontrialend = [values.volume = "<%trial.testTrial2.response%>"]
+/ ontrialend = [values.vol = evaluate(trial.testTrial2.response)]
 / recorddata = false
 </trial>
+
+<trial testTrial3>
+/ stimulustimes = [0=targetLabel, rotationALabel, rotationBLabel, rotationCLabel, rotationDLabel, target3rd,  rotationA3rd, rotationB3rd, rotationC3rd, rotationD3rd, topHorizontalThirdDivider, leftThirdVerticalDivider, studentAndSoundDivider, rightThirdVerticalDivider, volume, judgeA3rd, judgeB3rd, judgeC3rd, judgeD3rd, student2nd, decideSound]
+/ validresponse = ("g", "b")
+/ recorddata = false
+</trial>
+
 
 
 
@@ -373,7 +531,7 @@ Additional Stimuli
 **************************************************************************************************************
 
 <block testblock>
-/ trials = [1= testTrial, testTrial2]
+/ trials = [1= testTrial, testTrial2, testTrial3]
 </block>
 
 
