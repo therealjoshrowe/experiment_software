@@ -14,7 +14,7 @@
 
 **************************************************************************************************************
 **************************************************************************************************************
-	EDITABLE STIMULI: change editable stimuli here
+	ITEMS: Things other things pull from.
 **************************************************************************************************************
 **************************************************************************************************************
 
@@ -78,6 +78,10 @@
 /3 = "Rotation B"
 /4 = "Rotation C"
 /5 = "Rotation D"
+/6 = "Judge A's Choice"
+/7 = "Judge B's Choice"
+/8 = "Judge C's Choice"
+/9 = "Judge D's Choice"
 </item>
 
 
@@ -123,7 +127,7 @@ script requires Inquisit 5.0.0.0 or higher <<-- probably not actually
 
 **************************************************************************************************************
 **************************************************************************************************************
-	STIMULI
+	ROTATION STIMULI
 **************************************************************************************************************
 **************************************************************************************************************
 <text targetLabel>
@@ -282,11 +286,45 @@ script requires Inquisit 5.0.0.0 or higher <<-- probably not actually
 / erase = false
 </picture>
 
+
+**************************************************************************************************************
+**************************************************************************************************************
+	JUDGE STIMULI
+**************************************************************************************************************
+**************************************************************************************************************
+<text judgeALabel>
+/ items = labels
+/ size = (10%, 10%)
+/ select = constant(6)
+/ position = (75%, 45%)
+</text>
+
+<text judgeBLabel>
+/ items = labels
+/ size = (10%, 10%)
+/ select = constant(7)
+/ position = (95%, 45%)
+</text>
+
+<text judgeCLabel>
+/ items = labels
+/ size = (10%, 10%)
+/ select = constant(8)
+/ position = (75%, 70%)
+</text>
+
+<text judgeDLabel>
+/ items = labels
+/ size = (10%, 10%)
+/ select = constant(9)
+/ position = (95%, 70%)
+</text>
+
 <text judgeA>
 / items = judgeAResponses
 / select = sequence(1, 2)
 / size = (10%, 10%)
-/ position = (75%, 50%)
+/ position = (75%, 60%)
 / erase = true(black)
 </text>
 
@@ -294,7 +332,7 @@ script requires Inquisit 5.0.0.0 or higher <<-- probably not actually
 / items = judgeBResponses
 / select = sequence(1, 2)
 / size = (10%, 10%)
-/ position = (95%, 50%)
+/ position = (95%, 60%)
 / erase = true(black)
 </text>
 
@@ -302,7 +340,7 @@ script requires Inquisit 5.0.0.0 or higher <<-- probably not actually
 / items = judgeCResponses
 / select = sequence(1, 2)
 / size = (10%, 10%)
-/ position = (75%, 70%)
+/ position = (75%, 90%)
 / erase = true(black)
 </text>
 
@@ -310,7 +348,7 @@ script requires Inquisit 5.0.0.0 or higher <<-- probably not actually
 / items = judgeDResponses
 / select = sequence(1, 2)
 / size = (10%, 10%)
-/ position = (95%, 70%)
+/ position = (95%, 90%)
 / erase = true(black)
 </text>
 
@@ -378,6 +416,13 @@ script requires Inquisit 5.0.0.0 or higher <<-- probably not actually
 / erase = true(black)
 </text>
 
+
+**************************************************************************************************************
+**************************************************************************************************************
+	STUDENT STIMULI
+**************************************************************************************************************
+**************************************************************************************************************
+
 <text student>
 / items = studentResponses
 / select = sequence(1, 2)
@@ -398,14 +443,12 @@ script requires Inquisit 5.0.0.0 or higher <<-- probably not actually
 / erase = true(black)
 </text>
 
-<text instructions>
-/ items = instructions
-/ size = (80%, 80%)
-/ hjustify = left
-/ vjustify = center
-/ select = sequence
-/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 0)
-</text>
+
+**************************************************************************************************************
+**************************************************************************************************************
+	INSTRUCTION STIMULI
+**************************************************************************************************************
+**************************************************************************************************************
 
 <text chooseRotationInstructions>
 / items = instructions
@@ -433,6 +476,7 @@ script requires Inquisit 5.0.0.0 or higher <<-- probably not actually
 / select = constant(3)
 / position = (50%, 50%)
 </text>
+
 ********************************************************************************
 Additional Stimuli - That do not change on screen in between trials
 ********************************************************************************
@@ -503,7 +547,7 @@ Additional Stimuli - That do not change on screen in between trials
 **************************************************************************************************************
 
 <trial testTrial>
-/ stimulustimes = [0=targetLabel, rotationALabel, rotationBLabel, rotationCLabel, rotationDLabel, target,  rotationA, rotationB, rotationC, rotationD, topHorizontalThirdDivider, leftThirdVerticalDivider, studentAndSoundDivider, rightThirdVerticalDivider, volume; 3000 = judgeA, judgeB, judgeC, judgeD, chooseRotationInstructions]
+/ stimulustimes = [0=targetLabel, rotationALabel, rotationBLabel, rotationCLabel, rotationDLabel, target,  rotationA, rotationB, rotationC, rotationD, topHorizontalThirdDivider, leftThirdVerticalDivider, studentAndSoundDivider, rightThirdVerticalDivider, volume; 3000 = judgeA, judgeB, judgeC, judgeD, judgeALabel, judgeBLabel, judgeCLabel, judgeDLabel, chooseRotationInstructions]
 / validresponse = ("a", "b", "c")
 / recorddata = false
 </trial>
@@ -521,12 +565,9 @@ Additional Stimuli - That do not change on screen in between trials
 / recorddata = false
 </trial>
 
-
-
-
 **************************************************************************************************************
 **************************************************************************************************************
-	BLOCKS
+	BLOCKS: let's do those trail things over and over.
 **************************************************************************************************************
 **************************************************************************************************************
 
